@@ -35,12 +35,12 @@ ID: [a-zA-Z_]+; // Allow underscore in ID
 NUMBER: [0-9]+('.'[0-9]+)?;
 
 
-program : execution+;
-execution : '->'? ID LCURL statement* RCURL ('->' ID)? ;
+program : (execution)+;
+execution : '->'? ID LCURL (statement)* RCURL ('->' ID)? ;
 statement : action | reaction | execution ;
 reaction : 'on' event '->' ID ;
-event : 'obstacle' | 'low battery' | 'message' LSQUARE ID RSQUARE ;
-action : acDock | acMove | acTurn | acAscend | acDescend 
+event : 'obstacle' | 'low battery' | 'message' LSQUARE ID RSQUARE ; 
+action : (acDock | acMove | acTurn | acAscend | acDescend)
 ( 'for' expression 's' | 'at speed' expression )? ;
 
 acDock : 'return to base' ;
